@@ -1,0 +1,2 @@
+FROM openjdk:8-jre
+RUN apt update && apt install -y ca-certificates curl gnupg lsb-release && echo "deb https://notesalexp.org/tesseract-ocr5/$(lsb_release -cs)/ $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/notesalexp.list > /dev/null && wget -O - https://notesalexp.org/debian/alexp_key.asc | apt-key add - && apt-get update && apt-get install tesseract-ocr-all -y && apt-get remove --purge --auto-remove -y && rm -rf /var/lib/apt/lists/*
